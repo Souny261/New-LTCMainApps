@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>490038412582-useq9duk24h0vegqu0gl3bgtmehclkgl.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.490038412582-useq9duk24h0vegqu0gl3bgtmehclkgl</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAO49P_GufdwwNHpyJ7SgYjrmSfK01z5go</string>
+	<key>GCM_SENDER_ID</key>
+	<string>490038412582</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.ltcmainapp</string>
+	<key>PROJECT_ID</key>
+	<string>ltc-chat-e4c32</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ltc-chat-e4c32.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:490038412582:ios:3ca25471a4eb9f6fabede7</string>
+	<key>DATABASE_URL</key>
+	<string>https://ltc-chat-e4c32.firebaseio.com</string>
+</dict>
+</plist>

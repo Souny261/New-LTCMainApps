@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "183551463191",
+    "firebase_url": "https://ltcmainapp.firebaseio.com",
+    "project_id": "ltcmainapp",
+    "storage_bucket": "ltcmainapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183551463191:android:5201cef1cf5e3f6d47f152",
+        "android_client_info": {
+          "package_name": "com.example.ltcapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183551463191-q7nqfmht0dctdtg4538marol5nrbecm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ_SH4YenT2D0N1zrekGYDCRbbRAOI29E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183551463191-q7nqfmht0dctdtg4538marol5nrbecm2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "183551463191-ig9b4pbjokvjedrvv22rpmum1h917a5m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laotel.LTCMainApps"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:183551463191:android:7aaf26b151412583",
+        "android_client_info": {
+          "package_name": "com.example.ltcmainapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "183551463191-o2c99e8e2nkk05ccss7vjfj5q3g72fum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ltcmainapp",
+            "certificate_hash": "9713bfa13f5bc982cb2006a0dbd105069b63dcbc"
+          }
+        },
+        {
+          "client_id": "183551463191-q7nqfmht0dctdtg4538marol5nrbecm2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJ_SH4YenT2D0N1zrekGYDCRbbRAOI29E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "183551463191-q7nqfmht0dctdtg4538marol5nrbecm2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "183551463191-ig9b4pbjokvjedrvv22rpmum1h917a5m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laotel.LTCMainApps"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,205 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:ltcmainapp/Leave/Controllers/leaveService.dart';
+import 'package:ltcmainapp/Leave/Models/leaveModels.dart';
+import 'package:ltcmainapp/Leave/Pages/leaveDetail.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+
+class ListLeaveWait extends StatelessWidget {
+  LeaveService leaveService = new LeaveService();
+  @override
+  Widget build(BuildContext context) {
+    DateTime _dateTime = DateTime.now();
+    var year = DateFormat("yyyy").format(_dateTime);
+
+    var filter = "D";
+    int cout;
+    return FutureBuilder(
+      future: leaveService.getleaveDataHistory(year,false),
+      builder: (BuildContext context, AsyncSnapshot<List<dynamic>> snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView.builder(
+            itemCount: snapshot.data.length,
+            itemBuilder: (BuildContext context, index) {
+              LeaveDataModels dataLeave = snapshot.data[index];
+              var startDate = DateFormat("dd/MM/yyyy")
+                  .format(DateTime.parse(dataLeave.startDateTime));
+              var endDate = DateFormat("dd/MM/yyyy")
+                  .format(DateTime.parse(dataLeave.endDateTime));
+              var showDate;
+              if (startDate != endDate) {
+                var Start = DateFormat("dd")
+                    .format(DateTime.parse(dataLeave.startDateTime));
+                var End = DateFormat("dd/MM/yyyy")
+                    .format(DateTime.parse(dataLeave.endDateTime));
+                showDate = Text(
+                  "ວັນທີ ${Start}-${End}",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.red[800],
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold),
+                );
+              }
+              if (startDate == endDate) {
+                showDate = Text(
+                  "ວັນທີ ${startDate} ",
+                  style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.red[800],
+                      fontStyle: FontStyle.italic,
+                      fontWeight: FontWeight.bold),
+                );
+              }
+              var showTime = Text(
+                "ເວລາ ${DateFormat("hh:mm").format(DateTime.parse(dataLeave.startDateTime))} ຫາ ${DateFormat("hh:mm").format(DateTime.parse(dataLeave.endDateTime))}",
+                style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.red[800],
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold),
+              );
+              return filter == null || filter == ""
+                  ? Container(child: Text("ບໍ່ພົບຂໍ້ມູນ"))
+                  : dataLeave.statusType.toLowerCase().contains(
+                            filter.toLowerCase(),
+                          )
+                      ? GestureDetector(
+                          onTap: () {
+                            showCupertinoModalBottomSheet(
+                              context: context,
+                              builder: (context, dynamic) {
+                                return Material(
+                                  child: CupertinoPageScaffold(
+                                    child: Container(
+                                      height:
+                                          MediaQuery.of(context).size.height /
+                                              1.9,
+                                      child: LeaveDetail(
+                                        requestID:
+                                            dataLeave.requestID.toString(),
+                                        typeLeave:
+                                            dataLeave.leaveType.toString(),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(25),
+                              color: Colors.white,
+                            ),
+                            width: double.infinity,
+                            height: MediaQuery.of(context).size.height / 7,
+                            margin: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 8),
+                            padding: EdgeInsets.symmetric(
+                                vertical: 10, horizontal: 8),
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: <Widget>[
+                                  showImages('assets/png/leaveWaitApprove.png',
+                                      Colors.red[800]),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(
+                                          dataLeave.typeName,
+                                          style: TextStyle(
+                                              color: Colors.red[800],
+                                              fontFamily:
+                                                  'NotoSansLaoUI-Regular',
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        ),
+                                        SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.date_range,
+                                              color: Colors.red[800],
+                                              size: 20,
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            showDate
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 6,
+                                        ),
+                                        Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.timer,
+                                              color: Colors.red[800],
+                                              size: 20,
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            showTime
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      : Container();
+            },
+          );
+        } else if (snapshot.hasError) {
+          return Center(
+            child: Image.asset(
+              "assets/r.gif",
+              height: 100.0,
+              width: 100.0,
+            ),
+          );
+        } else {
+          return Center(
+            child: Image.asset(
+              "assets/r.gif",
+              height: 100.0,
+              width: 100.0,
+            ),
+          );
+        }
+      },
+    );
+  }
+
+  Widget showImages(path, color) {
+    return new Container(
+      width: 70,
+      height: 70,
+      margin: EdgeInsets.only(right: 15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        border: Border.all(width: 3, color: color),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(5.0),
+        child: Image.asset(
+          path,
+          color: color,
+        ),
+      ),
+    );
+  }
+}
